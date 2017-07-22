@@ -1,89 +1,47 @@
-package com.example.shivani.exlog;
+package com.example.shivani.usingwhatsapp;
 
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.PhoneNumberUtils;
 import android.view.View;
-import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
-import android.app.AlertDialog;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.R.attr.data;
-import static android.R.id.input;
+import static android.R.attr.id;
 
 public class MainActivity extends AppCompatActivity {
-
-    private String item_data="heya";
-    private String cost_data="";
-    private String h=" ";
-    private String entireLog="";
-    List<String> items_list = new ArrayList<String>();
-    ArrayAdapter<String> adapter;
-    int clickCounter= 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        adapter = new ArrayAdapter<String>(this,
-                R.layout.activity_listview, items_list);
-
-        ListView listView = (ListView) findViewById(R.id.logList);
-        listView.setAdapter(adapter);
     }
 
-    public void addNew(View v){
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    public void sendMsg(View v) {
 
 
-        builder.setTitle("Item");
-        final EditText item = new EditText(this);
-        final EditText cost = new EditText(this);
-
-
-
-        builder.setTitle("Enter Cost");
-        builder.setView(cost);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                cost_data = cost.getText().toString();
-                h=h+" "+cost_data;
-               /* TextView t = (TextView) findViewById(R.id.listView);
-                t.setText("\n"+h);*/
-
-            }
-        });
-        builder.show();
-
-        entireLog=entireLog+"\n"+h;
-
-
-
-        builder.setTitle("Item");
-        builder.setView(item);
-        builder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                item_data = item.getText().toString();
-                items_list.add(item_data+clickCounter++);
-                adapter.notifyDataSetChanged();
-
-            }
-        });
-        builder.show();
+        String smsNumber = "919989999391"; //without '+'
+        try {
+            Intent sendIntent = new Intent("android.intent.action.MAIN");
+            //sendIntent.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.setType("text/plain");
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+            sendIntent.putExtra("jid", smsNumber + "@s.whatsapp.net"); //phone number without "+" prefix
+            sendIntent.setPackage("com.whatsapp");
+            startActivity(sendIntent);
+        } catch(Exception e) {
+            Toast.makeText(this, "Error/n" + e.toString(), Toast.LENGTH_SHORT).show();
+        }
 
 
 
     }
+
 }

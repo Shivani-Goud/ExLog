@@ -19,6 +19,7 @@ _0 :
     through Whatsapp and deletes the entry filled till now.
    
    final layout: (https://s4.postimg.org/pma6ovzhp/appfinal.jpg)](https://postimg.org/image/wcqnybmnd/)
+   
    Message sent: (https://s11.postimg.org/5c6xlf35f/whatsapp_msg.png)](https://postimg.org/image/jve2mtwa7/)
   
   

@@ -5,8 +5,13 @@ Application to log expenditure
   and appending it to a listView and onclick the whole list and total expenditure as a text gets sent to the text bar 
   of Whatsapp application of a given recipient.
   
-  https://user-images.githubusercontent.com/22259719/28692714-5a1a1512-733f-11e7-93d5-3600bf4688a9.png[![1colend.png]
-  (https://s3.postimg.org/fdov1ulpf/1colend.png)](https://postimg.org/image/65wml5en3/)
+_0 :
+    These modules take input and forms a appended list.But forms only single column list
+ asking input: (https://s17.postimg.org/e5x5l6rdb/asking_input.jpg)](https://postimg.org/image/wlhmil5hn/)
+ Dispay of received input: (https://s3.postimg.org/fdov1ulpf/1colend.png)](https://postimg.org/image/65wml5en3/)
+ 
+    Here the other details entered are not processed yet
+ _1:
   
   
   
